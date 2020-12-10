@@ -7,10 +7,10 @@ API:
 * Przekazanie za pomocą $_POST nazwy drużyny:
     druzyna="[string]"
 * Przekazanie za pomocą $_POST stopień instruktorski:
-    stopien="-"     - brak stopnia
-    stopien="pwd"   - przewodnik/przewodniczka
-    stopien="phm"   - podharcmistrz/podharcmistrzyni
-    stopien="hm"    - harcmistrz/harcmistrzyni
+    * stopien="-"     - brak stopnia
+    * stopien="pwd"   - przewodnik/przewodniczka
+    * stopien="phm"   - podharcmistrz/podharcmistrzyni
+    * stopien="hm"    - harcmistrz/harcmistrzyni
 * Przekazanie za pomocą $_POST imienia i nazwiska:
     personalia="[string]"
 * Przekazanie za pomocą $_POST numeru rozkazu:
