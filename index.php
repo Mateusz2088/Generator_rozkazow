@@ -14,19 +14,19 @@
         <form>
             <fieldset class="row">
                 <legend>Organizacja</legend>
-                <label class="col-12">Podaj pełna nazwę hufca:<br>
+                <label class="nag col-12">Podaj pełna nazwę hufca:<br>
                     <input name="hufiec" type="text" class="form-control" <?php if(isset($_POST['hufiec'])){ echo 'value="'.$_POST['hufiec'].'"';} ?>>
                 </label>
-                <label class="col-12">Podaj nazwa drużyny:<br><input name="druzyna" type="text" class="form-control" <?php if(isset($_POST['druzyna'])){ echo 'value="'.$_POST['druzyna'].'"';} ?>></label>
+                <label class="nag col-12">Podaj nazwa drużyny:<br><input name="druzyna" type="text" class="form-control" <?php if(isset($_POST['druzyna'])){ echo 'value="'.$_POST['druzyna'].'"';} ?>></label>
             </fieldset>
             <fieldset class="row">
                 <legend>Podaj personalia wydającego rozkaz</legend>
-                <p class="col-12">Podaj stopień instruktorski:</p>
-                <label class="col-md-3"><input type="radio" name="st_instr" value="-" <?php if(isset($_POST['stopien'])){if($_POST['stopien']=='-'){echo 'checked';}} ?>> -</label>
-                <label class="col-md-3"><input type="radio" name="st_instr" value="pwd" <?php if(isset($_POST['stopien'])){if($_POST['stopien']=='pwd'){echo 'checked';}} ?>>pwd</label>
-                <label class="col-md-3"><input type="radio" name="st_instr" value="phm" <?php if(isset($_POST['stopien'])){if($_POST['stopien']=='phm'){echo 'checked';}} ?>>phm</label>
-                <label class="col-md-3"><input type="radio" name="st_instr" value="hm" <?php if(isset($_POST['stopien'])){if($_POST['stopien']=='hm'){echo 'checked';}} ?>>hm</label>
-                <p class="col-12">Podaj imie i nazwisko</p>
+                <p class="nag col-12">Podaj stopień instruktorski:</p>
+                <label class="col-sm-6 col-md-3"><input type="radio" name="st_instr" value="-" <?php if(isset($_POST['stopien'])){if($_POST['stopien']=='-'){echo 'checked';}} ?>> -</label>
+                <label class="col-sm-6 col-md-3"><input type="radio" name="st_instr" value="pwd" <?php if(isset($_POST['stopien'])){if($_POST['stopien']=='pwd'){echo 'checked';}} ?>>pwd</label>
+                <label class="col-sm-6 col-md-3"><input type="radio" name="st_instr" value="phm" <?php if(isset($_POST['stopien'])){if($_POST['stopien']=='phm'){echo 'checked';}} ?>>phm</label>
+                <label class="col-sm-6 col-md-3"><input type="radio" name="st_instr" value="hm" <?php if(isset($_POST['stopien'])){if($_POST['stopien']=='hm'){echo 'checked';}} ?>>hm</label>
+                <p class="nag col-12">Podaj imie i nazwisko</p>
                 <label class="col-md-6"><input type="text" name="personalia" class="form-control" <?php if(isset($_POST['personalia'])){ echo 'value="'.$_POST['personalia'].'"';}?>></label>
             </fieldset>
             </form>
@@ -40,24 +40,14 @@
             <button onclick="rozne()" class="col-sm-4 btn btn-info border border-primary">Różne</button>
         </fieldset>
         <div class="row" id="tresc">
-            <div class="col-12" id="1">
-
-            </div>
-            <div class="col-12" id="2">
-
-            </div>
-            <div class="col-12" id="3">
-
-            </div>
-            <div class="col-12" id="4">
-
-            </div>
-            <div class="col-12" id="5">
-
-            </div>
-            <div class="col-12" id="6">
-
-            </div>
+            <ol>
+                <li id="1">Uchwały, zarządzenia, decyzje</li>
+                <li id="2">Zwolnienia</li>
+                <li id="3">Mianowania</li>
+                <li id="4">Przyznanie stopni, sprawności, znaków służb, uprawnień, odznak, zaliczenie zadań i projektów</li>
+                <li id="5">Upomnienia i kary</li>
+                <li id="6">Różne</li>
+            </ol>
         </div>
 
         <div class="modal fade" id="zarzadzanie_popup" tabindex="-1" role="dialog" aria-labelledby="zarzadzanie_popup" aria-hidden="true">
@@ -68,7 +58,7 @@
               </div>
               <div class="modal-body">
                 Aby oznaczyć danego harcerza aby pobrać dane z TIPI należy napisać " ... @Imie_Nazwisko ... "<br>
-                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Uchwały, zarządzenia, decyzje</i></b><br><textarea rows="3" class="col-12" id="tresc"></textarea></label><br><u>Przykłady:</u><br><i>
+                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Uchwały, zarządzenia, decyzje</i></b><br><textarea rows="3" class="col-12" id="tresc_1"></textarea></label><br><u>Przykłady:</u><br><i>
                   Uchwałą Rady Drużyny dopuszczam do złożenia Przyrzeczenia Harcerskiego następujące druhny i druhów: (…)<br>
                     Uchwałą Rady Drużyny przyjmuję do drużyny na okres próbny (skreślam ze stanu drużyny) dh ….<br>
                   Uchwałą Rady Drużyny wyrażam zgodę druhowi ćwikowi Janowi Kowalskiemu na pełnienie funkcji przybocznego w 15 Gromadzie Zuchowej "Leśne Duszki".</i>

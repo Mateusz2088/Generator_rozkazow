@@ -1,0 +1,13 @@
+.nag {
+    font-weight: bold;
+}
+ol { 
+    counter-reset: nazwa_licznika;
+}
+ol li { 
+    list-style-type: none;
+}
+ol li:before { 
+    content: counters(nazwa_licznika, ".") ". "; 
+    counter-increment: nazwa_licznika ;
+}
