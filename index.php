@@ -33,7 +33,7 @@
         <fieldset id="panel" class="row">
             <legend>Dodaj punkty do rozkazu</legend>
             <button class="col-sm-4 btn btn-info border border-primary" data-toggle="modal" data-target="#zarzadzanie_popup">Uchwały, zarządzenia, decyzje</button>
-            <button onclick="zwolnienia()" class="col-sm-4 btn btn-info border border-primary">Zwolnienia</button>
+            <button class="col-sm-4 btn btn-info border border-primary">Zwolnienia</button>
             <button onclick="mianowania()" class="col-sm-4 btn btn-info border border-primary">Mianowania</button>
             <button onclick="przyznanie()" class="col-sm-4 btn btn-info border border-primary">Przyznanie stopni, sprawności, znaków służb, uprawnień, odznak, zaliczenie zadań i projektów</button>
             <button onclick="kary()" class="col-sm-4 btn btn-info border border-primary">Upomnienia i kary</button>
@@ -41,12 +41,12 @@
         </fieldset>
         <div class="row" id="tresc">
             <ol>
-                <li id="1">Uchwały, zarządzenia, decyzje</li>
-                <li id="2">Zwolnienia</li>
-                <li id="3">Mianowania</li>
-                <li id="4">Przyznanie stopni, sprawności, znaków służb, uprawnień, odznak, zaliczenie zadań i projektów</li>
-                <li id="5">Upomnienia i kary</li>
-                <li id="6">Różne</li>
+                <li id="1" class="hidden">Uchwały, zarządzenia, decyzje</li>
+                <li id="2" class="hidden">Zwolnienia</li>
+                <li id="3" class="hidden">Mianowania</li>
+                <li id="4" class="hidden">Przyznanie stopni, sprawności, znaków służb, uprawnień, odznak, zaliczenie zadań i projektów</li>
+                <li id="5" class="hidden">Upomnienia i kary</li>
+                <li id="6" class="hidden">Różne</li>
             </ol>
         </div>
 
@@ -57,15 +57,34 @@
                 <h4 class="modal-title">Uchwały, zarządzenia, decyzje</h4>
               </div>
               <div class="modal-body">
-                Aby oznaczyć danego harcerza aby pobrać dane z TIPI należy napisać " ... @Imie_Nazwisko ... "<br>
-                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Uchwały, zarządzenia, decyzje</i></b><br><textarea rows="3" class="col-12" id="tresc_1"></textarea></label><br><u>Przykłady:</u><br><i>
-                  Uchwałą Rady Drużyny dopuszczam do złożenia Przyrzeczenia Harcerskiego następujące druhny i druhów: (…)<br>
+                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Uchwały, zarządzenia, decyzje</i></b><br><input type="text" class="col-12" id="tresc_1"></label><br><u>Przykłady:</u><br><i>
+                    Uchwałą Rady Drużyny dopuszczam do złożenia Przyrzeczenia Harcerskiego następujące druhny i druhów: (…)<br>
                     Uchwałą Rady Drużyny przyjmuję do drużyny na okres próbny (skreślam ze stanu drużyny) dh ….<br>
-                  Uchwałą Rady Drużyny wyrażam zgodę druhowi ćwikowi Janowi Kowalskiemu na pełnienie funkcji przybocznego w 15 Gromadzie Zuchowej "Leśne Duszki".</i>
+                    Uchwałą Rady Drużyny wyrażam zgodę druhowi ćwikowi Janowi Kowalskiemu na pełnienie funkcji przybocznego w 15 Gromadzie Zuchowej "Leśne Duszki".</i>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Anuluj</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
                 <button type="button" class="btn btn-success" onclick="zarządzanie()">Dodaj do rozkazu</button>
+              </div>
+            </div> <!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div>
+        <div class="modal fade" id="zwolnienia_popup" tabindex="-1" role="dialog" aria-labelledby="zwolnienia_popup" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Uchwały, zarządzenia, decyzje</h4>
+              </div>
+              <div class="modal-body">
+
+                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Uchwały, zarządzenia, decyzje</i></b><br><input type="text" class="col-12" id="tresc_1"></label><br><u>Przykłady:</u><br><i>
+                    Uchwałą Rady Drużyny dopuszczam do złożenia Przyrzeczenia Harcerskiego następujące druhny i druhów: (…)<br>
+                    Uchwałą Rady Drużyny przyjmuję do drużyny na okres próbny (skreślam ze stanu drużyny) dh ….<br>
+                    Uchwałą Rady Drużyny wyrażam zgodę druhowi ćwikowi Janowi Kowalskiemu na pełnienie funkcji przybocznego w 15 Gromadzie Zuchowej "Leśne Duszki".</i>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
+                <button type="button" class="btn btn-success" onclick="zwolnienia()" >Dodaj do rozkazu</button>
               </div>
             </div> <!-- /.modal-content -->
           </div><!-- /.modal-dialog -->

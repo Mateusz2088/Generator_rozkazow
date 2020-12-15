@@ -11,3 +11,9 @@ ol li:before {
     content: counters(nazwa_licznika, ".") ". "; 
     counter-increment: nazwa_licznika ;
 }
+.hidden{
+    visibility: hidden;
+}
+.show{
+    visibility: visible;
+}
