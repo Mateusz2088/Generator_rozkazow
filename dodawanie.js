@@ -1,7 +1,7 @@
-var licznik=1;
+var licznik_z=1;
 function zarządzanie(){
     var pkt_1=document.getElementById('1');
-    if(licznik==1){
+    if(licznik_z==1){
         var pod_pkt=document.createElement('ol');
         pod_pkt.id="podpunkty_1";
         pkt_1.appendChild(pod_pkt);
@@ -13,5 +13,5 @@ function zarządzanie(){
     punkt.innerHTML = document.getElementById('tresc_1').value;
     console.log(document.getElementById('tresc_1').value);
     pod_pkt.appendChild(punkt);
-    licznik++;
+    licznik_z++;
 }
