@@ -32,23 +32,30 @@
             </form>
         <fieldset id="panel" class="row">
             <legend>Dodaj punkty do rozkazu</legend>
-            <button class="col-sm-4 btn btn-info border border-primary" data-toggle="modal" data-target="#zarzadzanie_popup">Uchwały, zarządzenia, decyzje</button>
-            <button class="col-sm-4 btn btn-info border border-primary">Zwolnienia</button>
-            <button onclick="mianowania()" class="col-sm-4 btn btn-info border border-primary">Mianowania</button>
-            <button onclick="przyznanie()" class="col-sm-4 btn btn-info border border-primary">Przyznanie stopni, sprawności, znaków służb, uprawnień, odznak, zaliczenie zadań i projektów</button>
-            <button onclick="kary()" class="col-sm-4 btn btn-info border border-primary">Upomnienia i kary</button>
-            <button onclick="rozne()" class="col-sm-4 btn btn-info border border-primary">Różne</button>
+            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#zarzadzanie_popup">Uchwały, zarządzenia, decyzje</button>
+            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#zwolnienia_popup">Zwolnienia</button>
+            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#mianowania_popup">Mianowania</button>
+            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#przyznanie_popup">Przyznanie stopni, sprawności, znaków służb, uprawnień, odznak, zaliczenie zadań i projektów</button>
+            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#nagrody_popup">Nagrody i wyróżnienia</button>
+            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#upomnienia_popup">Upomnienia i kary</button>
+            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#rozne_popup">Różne</button>
         </fieldset>
+
+        <!-- Treść rozkazu -->
+
         <div class="row" id="tresc">
             <ol>
                 <li id="1" class="hidden">Uchwały, zarządzenia, decyzje</li>
                 <li id="2" class="hidden">Zwolnienia</li>
                 <li id="3" class="hidden">Mianowania</li>
                 <li id="4" class="hidden">Przyznanie stopni, sprawności, znaków służb, uprawnień, odznak, zaliczenie zadań i projektów</li>
-                <li id="5" class="hidden">Upomnienia i kary</li>
-                <li id="6" class="hidden">Różne</li>
+                <li id="5" class="hidden">Nagrody i wyróżnienia</li>
+                <li id="6" class="hidden">Upomnienia i kary</li>
+                <li id="7" class="hidden">Różne</li>
             </ol>
         </div>
+
+        <!-- Zarządzanie okienko-->
 
         <div class="modal fade" id="zarzadzanie_popup" tabindex="-1" role="dialog" aria-labelledby="zarzadzanie_popup" aria-hidden="true">
           <div class="modal-dialog">
@@ -69,22 +76,123 @@
             </div> <!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div>
+        <!-- Zwolnienia okienko-->
         <div class="modal fade" id="zwolnienia_popup" tabindex="-1" role="dialog" aria-labelledby="zwolnienia_popup" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title">Uchwały, zarządzenia, decyzje</h4>
+                <h4 class="modal-title">Zwolnienia</h4>
               </div>
               <div class="modal-body">
-
-                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Uchwały, zarządzenia, decyzje</i></b><br><input type="text" class="col-12" id="tresc_1"></label><br><u>Przykłady:</u><br><i>
-                    Uchwałą Rady Drużyny dopuszczam do złożenia Przyrzeczenia Harcerskiego następujące druhny i druhów: (…)<br>
-                    Uchwałą Rady Drużyny przyjmuję do drużyny na okres próbny (skreślam ze stanu drużyny) dh ….<br>
-                    Uchwałą Rady Drużyny wyrażam zgodę druhowi ćwikowi Janowi Kowalskiemu na pełnienie funkcji przybocznego w 15 Gromadzie Zuchowej "Leśne Duszki".</i>
+                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Zwolnienia</i></b><br><input type="text" class="col-12" id="tresc_2"></label><br><u>Przykłady:</u><br><i>
+                    Na wniosek Rady Drużyny zwalniam z członkostwa w niej druha ćwika Jana Kowalskiego<br>
+                   Zwalniam z funkcji zastępowego zastępu "Szkwał" druha wyw. Tomasza Nowaka.</i>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
                 <button type="button" class="btn btn-success" onclick="zwolnienia()" >Dodaj do rozkazu</button>
+              </div>
+            </div> <!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div>
+
+        <!-- Mianowania okienko-->
+
+        <div class="modal fade" id="mianowania_popup" tabindex="-1" role="dialog" aria-labelledby="mianowania_popup" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Mianowania</h4>
+              </div>
+              <div class="modal-body">
+                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Mianowania</i></b><br><input type="text" class="col-12" id="tresc_3"></label><br><u>Przykłady:</u><br><i>
+                    Na wniosek Rady Drużyny powołuję na członka tej rady druha Piotra Osińskiego.<br>
+                    Na wniosek zastępu ,,Szkwał" mianuję druha Piotra Osińskiego zastępowym wymienionego zastępu.</i>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
+                <button type="button" class="btn btn-success" onclick="mianowania()">Dodaj do rozkazu</button>
+              </div>
+            </div> <!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div>
+
+        <!-- Przyznanie okienko-->
+
+        <div class="modal fade" id="przyznanie_popup" tabindex="-1" role="dialog" aria-labelledby="przyznanie_popup" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Przyznanie stopni, sprawności, znaków służb, uprawnień, odznak, zaliczenie zadań i projektów</h4>
+              </div>
+              <div class="modal-body">
+                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Przyznanie stopni, sprawności, znaków służb, uprawnień, odznak, zaliczenie zadań i projektów</i></b><br><input type="text" class="col-12" id="tresc_4"></label><br><u>Przykłady:</u><br><i>
+                    Otwieram próby na stopnie młodzika druhom: Pawłowi Omega, Adamowi Alfa.<br>
+                    Na wniosek Rady Drużyny przyznaje stopień wywiadowcy druhowi Michałowi Kowalskiemu.</i>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
+                <button type="button" class="btn btn-success" onclick="przyznanie()">Dodaj do rozkazu</button>
+              </div>
+            </div> <!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div>
+
+        <!-- Nagrody i wyróżnienia okienko-->
+
+        <div class="modal fade" id="nagrody_popup" tabindex="-1" role="dialog" aria-labelledby="nagrody_popup" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Nagrody i wyróżnienia</h4>
+              </div>
+              <div class="modal-body">
+                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Nagrody i wyróżnienia</i></b><br><input type="text" class="col-12" id="tresc_5"></label><br><u>Przykłady:</u><br><i>
+                    Na wniosek Rady Drużyny udzielam pochwały zastępowi "Sztorm" za zorganizowanie balu andrzejkowego.</i>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
+                <button type="button" class="btn btn-success" onclick="nagrody()">Dodaj do rozkazu</button>
+              </div>
+            </div> <!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div>
+
+        <!-- Upomnienia i kary okienko-->
+
+        <div class="modal fade" id="upomnienia_popup" tabindex="-1" role="dialog" aria-labelledby="upomnienia_popup" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Upomnienia i kary</h4>
+              </div>
+              <div class="modal-body">
+                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Upomnienia i kary</i></b><br><input type="text" class="col-12" id="tresc_6"></label><br><u>Przykłady:</u><br><i>
+                    Na wniosek Rady Drużyny udzielam upomnienia druhowi Janowi Kowalskiemu za niewykonanie zadania wyznaczonego przez radę drużyny.</i>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
+                <button type="button" class="btn btn-success" onclick="upomnienia()">Dodaj do rozkazu</button>
+              </div>
+            </div> <!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div>
+
+        <!-- Różne okienko-->
+
+        <div class="modal fade" id="rozne_popup" tabindex="-1" role="dialog" aria-labelledby="rozne_popup" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Różne</h4>
+              </div>
+              <div class="modal-body">
+                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Różne</i></b><br><input type="text" class="col-12" id="tresc_7"></label><br><u>Przykłady:</u><br><i>
+                    Przypominam, że 3 października mija termin zgłaszania na Hufcowy Kurs Zastępowych.</i>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
+                <button type="button" class="btn btn-success" onclick="nagrody()">Dodaj do rozkazu</button>
               </div>
             </div> <!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
