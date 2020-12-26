@@ -7,11 +7,19 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 	<link rel="stylesheet" href="generator.css" >
     <script src="dodawanie.js"></script>
+    <script src="pdf_gen.js"></script>
 </head>
 <body>
     <div class="container">
         <h1 class="col-12">Rozkazy</h1>
         <form>
+            <fieldset class="row">
+            <legend>Podstawowe dane</legend>
+                <label class="nag col-12">Podaj numer rozkazu <input class="col-12" type="text" name="nr" <?php if(isset($_POST['nr'])){ echo 'value="'.$_POST['nr'].'"';} ?>></label>
+                <label class="nag col-12">Podaj rok wydania rozkazu <input class="col-12" type="number" min="1900" max="2099" step="1" name="rok" <?php if(isset($_POST['rok'])){ echo 'value="'.$_POST['rok'].'"';} ?>></label>
+                <label class="nag col-12">Podaj datę opublikowania rozkazu <input class="col-12" type="date" name="data" <?php if(isset($_POST['data'])){ echo 'value="'.$_POST['data'].'"';} ?>></label>
+                <label class="nag col-12">Podaj miejscowość wydania rozkazu <input class="col-12" type="text" name="miejsce" <?php if(isset($_POST['miejsce'])){ echo 'value="'.$_POST['miejsce'].'"';} ?>></label>
+            </fieldset>
             <fieldset class="row">
                 <legend>Organizacja</legend>
                 <label class="nag col-12">Podaj pełna nazwę hufca:<br>
@@ -32,6 +40,7 @@
             </form>
         <fieldset id="panel" class="row">
             <legend>Dodaj punkty do rozkazu</legend>
+            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#wstep_popup">Wstęp</button>
             <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#zarzadzanie_popup">Uchwały, zarządzenia, decyzje</button>
             <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#zwolnienia_popup">Zwolnienia</button>
             <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#mianowania_popup">Mianowania</button>
@@ -39,12 +48,13 @@
             <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#nagrody_popup">Nagrody i wyróżnienia</button>
             <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#upomnienia_popup">Upomnienia i kary</button>
             <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#rozne_popup">Różne</button>
+            <button class="col-sm-4 col-md-6 btn btn-success border border-primary" >Wygeneruj pdf</button>
         </fieldset>
 
         <!-- Treść rozkazu -->
 
         <div class="row" id="tresc">
-            <ol>
+            <ol class="col-12">
                 <li id="1" class="hidden">Uchwały, zarządzenia, decyzje</li>
                 <li id="2" class="hidden">Zwolnienia</li>
                 <li id="3" class="hidden">Mianowania</li>
@@ -55,6 +65,28 @@
             </ol>
         </div>
 
+        <!-- Wstęp okienko-->
+
+        <div class="modal fade" id="wstep_popup" tabindex="-1" role="dialog" aria-labelledby="wstep_popup" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Wstęp</h4>
+              </div>
+              <div class="modal-body">
+                  <label><b>Wpisz poniżej wstęp do rozkazu:</b><br><textarea class="form-control col-12" id="tresc_w"></textarea></label>
+                      <br><u>Zasady:</u><br><i>
+                    Rozkaz może poprzedzać wstęp okolicznościowy.<br>
+                    Wyjątki z rozkazu jednostki nadrzędnej (przed rozkazem odczytujemy te wyjątki z rozkazów jednostek nadrzędnych, które dotyczą drużyny).
+                    </i>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
+                <button type="button" class="btn btn-success" onclick="wstep()">Dodaj do rozkazu</button>
+              </div>
+            </div> <!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div>
         <!-- Zarządzanie okienko-->
 
         <div class="modal fade" id="zarzadzanie_popup" tabindex="-1" role="dialog" aria-labelledby="zarzadzanie_popup" aria-hidden="true">
@@ -76,6 +108,7 @@
             </div> <!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div>
+
         <!-- Zwolnienia okienko-->
         <div class="modal fade" id="zwolnienia_popup" tabindex="-1" role="dialog" aria-labelledby="zwolnienia_popup" aria-hidden="true">
           <div class="modal-dialog">

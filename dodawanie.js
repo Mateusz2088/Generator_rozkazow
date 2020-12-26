@@ -16,6 +16,18 @@ function zarządzanie(){
     licznik_z++;
     document.getElementById('tresc_1').value="";
 }
+function nl2br (str, is_xhtml) {
+    if (typeof str === 'undefined' || str === null) {
+        return '';
+    }
+    var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+    return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+}
+
+function wstep(){
+    var div=document.getElementById('tresc');
+    div.innerHTML=nl2br(document.getElementById('tresc_w').value)+div.innerHTML;
+}
 
 var licznik_zw=1;
 function zwolnienia(){
