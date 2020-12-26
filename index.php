@@ -192,7 +192,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
-                <button type="button" class="btn btn-success" onclick="nagrody()">Dodaj do rozkazu</button>
+                <button type="button" class="btn btn-success" onclick="rozne()">Dodaj do rozkazu</button>
               </div>
             </div> <!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
