@@ -48,7 +48,7 @@
             <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#nagrody_popup">Nagrody i wyróżnienia</button>
             <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#upomnienia_popup">Upomnienia i kary</button>
             <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#rozne_popup">Różne</button>
-            <button class="col-sm-4 col-md-6 btn btn-success border border-primary" >Wygeneruj pdf</button>
+            <button class="col-sm-4 col-md-6 btn btn-success border border-primary" onclick="Export2Doc('exportContent');">Wygeneruj pdf</button>
         </fieldset>
 
         <!-- Treść rozkazu -->
