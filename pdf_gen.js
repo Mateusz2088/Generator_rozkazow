@@ -1,7 +1,8 @@
 function Export2Doc(){
+    pobierz_dane();
     var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Rozkaz</title></head><body>";
     var postHtml = "</body></html>";
-    var html = preHtml+document.getElementById('tresc').innerHTML+postHtml;
+    var html = preHtml+document.getElementById('dokument').innerHTML+postHtml;
 
     var blob = new Blob(['\ufeff', html], {
         type: 'application/msword'
@@ -32,4 +33,5 @@ function Export2Doc(){
     }
     
     document.body.removeChild(downloadLink);
+
 }

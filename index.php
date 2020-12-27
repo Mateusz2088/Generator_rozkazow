@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 	<link rel="stylesheet" href="generator.css" >
-    <script src="dodawanie.js"></script>
+    <script src="punkty.js"></script>
     <script src="pdf_gen.js"></script>
 </head>
 <body>
@@ -50,19 +50,28 @@
             <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#rozne_popup">Różne</button>
             <button class="col-sm-4 col-md-6 btn btn-success border border-primary" onclick="Export2Doc('exportContent');">Wygeneruj pdf</button>
         </fieldset>
-
+        Treść dokumentu
         <!-- Treść rozkazu -->
 
-        <div class="row" id="tresc">
-            <ol class="col-12">
-                <li id="1" class="hidden">Uchwały, zarządzenia, decyzje</li>
-                <li id="2" class="hidden">Zwolnienia</li>
-                <li id="3" class="hidden">Mianowania</li>
-                <li id="4" class="hidden">Przyznanie stopni, sprawności, znaków służb, uprawnień, odznak, zaliczenie zadań i projektów</li>
-                <li id="5" class="hidden">Nagrody i wyróżnienia</li>
-                <li id="6" class="hidden">Upomnienia i kary</li>
-                <li id="7" class="hidden">Różne</li>
-            </ol>
+        <div class="row" id="dokument">
+            <div class="row">
+                <div class="col-6" id="head_l"></div>
+                <div class="col-6" id="head_r"></div>
+            </div>
+            <h1 id="nr_roz"></h1>
+            <div class="row" id="tresc">
+                <div class="col-12" id="0"></div>
+                <div class="col-12" id="1"></div>
+                <div class="col-12" id="2"></div>
+                <div class="col-12" id="3"></div>
+                <div class="col-12" id="4"></div>
+                <div class="col-12" id="5"></div>
+                <div class="col-12" id="6"></div>
+                <div class="col-12" id="7"></div>
+            </div>
+            <div class="row">
+            <p class="right" id="podpis"></p>
+            </div>
         </div>
 
         <!-- Wstęp okienko-->
@@ -74,7 +83,7 @@
                 <h4 class="modal-title">Wstęp</h4>
               </div>
               <div class="modal-body">
-                  <label><b>Wpisz poniżej wstęp do rozkazu:</b><br><textarea class="form-control col-12" id="tresc_w"></textarea></label>
+                  <label><b>Wpisz poniżej wstęp do rozkazu:</b><br><textarea class="form-control col-12" name="tr_ppkt"></textarea></label>
                       <br><u>Zasady:</u><br><i>
                     Rozkaz może poprzedzać wstęp okolicznościowy.<br>
                     Wyjątki z rozkazu jednostki nadrzędnej (przed rozkazem odczytujemy te wyjątki z rozkazów jednostek nadrzędnych, które dotyczą drużyny).
@@ -82,7 +91,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
-                <button type="button" class="btn btn-success" onclick="wstep()">Dodaj do rozkazu</button>
+                <button type="button" class="btn btn-success" onclick="dodaj_pkt(0,0)">Dodaj do rozkazu</button>
               </div>
             </div> <!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
@@ -96,14 +105,14 @@
                 <h4 class="modal-title">Uchwały, zarządzenia, decyzje</h4>
               </div>
               <div class="modal-body">
-                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Uchwały, zarządzenia, decyzje</i></b><br><input type="text" class="col-12" id="tresc_1"></label><br><u>Przykłady:</u><br><i>
+                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Uchwały, zarządzenia, decyzje</i></b><br><input type="text" class="col-12" name="tr_ppkt"></label><br><u>Przykłady:</u><br><i>
                     Uchwałą Rady Drużyny dopuszczam do złożenia Przyrzeczenia Harcerskiego następujące druhny i druhów: (…)<br>
                     Uchwałą Rady Drużyny przyjmuję do drużyny na okres próbny (skreślam ze stanu drużyny) dh ….<br>
                     Uchwałą Rady Drużyny wyrażam zgodę druhowi ćwikowi Janowi Kowalskiemu na pełnienie funkcji przybocznego w 15 Gromadzie Zuchowej "Leśne Duszki".</i>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
-                <button type="button" class="btn btn-success" onclick="zarządzanie()">Dodaj do rozkazu</button>
+                <button type="button" class="btn btn-success" onclick="dodaj_pkt(1,0)">Dodaj do rozkazu</button>
               </div>
             </div> <!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
@@ -117,13 +126,13 @@
                 <h4 class="modal-title">Zwolnienia</h4>
               </div>
               <div class="modal-body">
-                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Zwolnienia</i></b><br><input type="text" class="col-12" id="tresc_2"></label><br><u>Przykłady:</u><br><i>
+                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Zwolnienia</i></b><br><input type="text" class="col-12" name="tr_ppkt"></label><br><u>Przykłady:</u><br><i>
                     Na wniosek Rady Drużyny zwalniam z członkostwa w niej druha ćwika Jana Kowalskiego<br>
                    Zwalniam z funkcji zastępowego zastępu "Szkwał" druha wyw. Tomasza Nowaka.</i>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
-                <button type="button" class="btn btn-success" onclick="zwolnienia()" >Dodaj do rozkazu</button>
+                <button type="button" class="btn btn-success" onclick="dodaj_pkt(2,0)" >Dodaj do rozkazu</button>
               </div>
             </div> <!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
@@ -138,13 +147,13 @@
                 <h4 class="modal-title">Mianowania</h4>
               </div>
               <div class="modal-body">
-                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Mianowania</i></b><br><input type="text" class="col-12" id="tresc_3"></label><br><u>Przykłady:</u><br><i>
+                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Mianowania</i></b><br><input type="text" class="col-12" name="tr_ppkt"></label><br><u>Przykłady:</u><br><i>
                     Na wniosek Rady Drużyny powołuję na członka tej rady druha Piotra Osińskiego.<br>
                     Na wniosek zastępu ,,Szkwał" mianuję druha Piotra Osińskiego zastępowym wymienionego zastępu.</i>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
-                <button type="button" class="btn btn-success" onclick="mianowania()">Dodaj do rozkazu</button>
+                <button type="button" class="btn btn-success" onclick="dodaj_pkt(3,0)">Dodaj do rozkazu</button>
               </div>
             </div> <!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
@@ -159,13 +168,13 @@
                 <h4 class="modal-title">Przyznanie stopni, sprawności, znaków służb, uprawnień, odznak, zaliczenie zadań i projektów</h4>
               </div>
               <div class="modal-body">
-                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Przyznanie stopni, sprawności, znaków służb, uprawnień, odznak, zaliczenie zadań i projektów</i></b><br><input type="text" class="col-12" id="tresc_4"></label><br><u>Przykłady:</u><br><i>
+                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Przyznanie stopni, sprawności, znaków służb, uprawnień, odznak, zaliczenie zadań i projektów</i></b><br><input type="text" class="col-12" name="tr_ppkt"></label><br><u>Przykłady:</u><br><i>
                     Otwieram próby na stopnie młodzika druhom: Pawłowi Omega, Adamowi Alfa.<br>
                     Na wniosek Rady Drużyny przyznaje stopień wywiadowcy druhowi Michałowi Kowalskiemu.</i>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
-                <button type="button" class="btn btn-success" onclick="przyznanie()">Dodaj do rozkazu</button>
+                <button type="button" class="btn btn-success" onclick="dodaj_pkt(4,0)">Dodaj do rozkazu</button>
               </div>
             </div> <!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
@@ -180,12 +189,12 @@
                 <h4 class="modal-title">Nagrody i wyróżnienia</h4>
               </div>
               <div class="modal-body">
-                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Nagrody i wyróżnienia</i></b><br><input type="text" class="col-12" id="tresc_5"></label><br><u>Przykłady:</u><br><i>
+                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Nagrody i wyróżnienia</i></b><br><input type="text" class="col-12" name="tr_ppkt"></label><br><u>Przykłady:</u><br><i>
                     Na wniosek Rady Drużyny udzielam pochwały zastępowi "Sztorm" za zorganizowanie balu andrzejkowego.</i>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
-                <button type="button" class="btn btn-success" onclick="nagrody()">Dodaj do rozkazu</button>
+                <button type="button" class="btn btn-success" onclick="dodaj_pkt(5,0)">Dodaj do rozkazu</button>
               </div>
             </div> <!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
@@ -200,12 +209,12 @@
                 <h4 class="modal-title">Upomnienia i kary</h4>
               </div>
               <div class="modal-body">
-                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Upomnienia i kary</i></b><br><input type="text" class="col-12" id="tresc_6"></label><br><u>Przykłady:</u><br><i>
+                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Upomnienia i kary</i></b><br><input type="text" class="col-12" name="tr_ppkt"></label><br><u>Przykłady:</u><br><i>
                     Na wniosek Rady Drużyny udzielam upomnienia druhowi Janowi Kowalskiemu za niewykonanie zadania wyznaczonego przez radę drużyny.</i>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
-                <button type="button" class="btn btn-success" onclick="upomnienia()">Dodaj do rozkazu</button>
+                <button type="button" class="btn btn-success" onclick="dodaj_pkt(6,0)">Dodaj do rozkazu</button>
               </div>
             </div> <!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
@@ -220,12 +229,12 @@
                 <h4 class="modal-title">Różne</h4>
               </div>
               <div class="modal-body">
-                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Różne</i></b><br><input type="text" class="col-12" id="tresc_7"></label><br><u>Przykłady:</u><br><i>
+                  <label><b>Wpisz pojedyńczy punkt rozkazu o kategorii <i>Różne</i></b><br><input type="text" class="col-12" name="tr_ppkt"></label><br><u>Przykłady:</u><br><i>
                     Przypominam, że 3 października mija termin zgłaszania na Hufcowy Kurs Zastępowych.</i>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
-                <button type="button" class="btn btn-success" onclick="rozne()">Dodaj do rozkazu</button>
+                <button type="button" class="btn btn-success" onclick="dodaj_pkt(7,0)">Dodaj do rozkazu</button>
               </div>
             </div> <!-- /.modal-content -->
           </div><!-- /.modal-dialog -->

@@ -1,3 +1,10 @@
+@font-face {
+	font-family: museo;
+	src: url(museo300-regular.otf);
+}
+body {
+	font-family: museo;
+}
 .nag {
     font-weight: bold;
 }
@@ -16,5 +23,13 @@ ol li:before {
 }
 .show{
     visibility: visible;
-
+}
+#head_r{
+    text-align: right;
+}
+h1 {
+    text-align: center;
+}
+.right{
+    text-align: right;
 }
