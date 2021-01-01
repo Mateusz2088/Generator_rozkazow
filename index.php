@@ -25,12 +25,12 @@
                 <label class="nag col-12">Podaj pełna nazwę hufca:<br>
                     <input name="hufiec" type="text" class="form-control" <?php if(isset($_POST['hufiec'])){ echo 'value="'.$_POST['hufiec'].'"';} ?>>
                 </label>
-                <label class="nag col-12">Podaj nazwa drużyny:<br><input name="druzyna" type="text" class="form-control" <?php if(isset($_POST['druzyna'])){ echo 'value="'.$_POST['druzyna'].'"';} ?>></label>
+                <label class="nag col-12">Podaj nazwę drużyny:<br><input name="druzyna" type="text" class="form-control" <?php if(isset($_POST['druzyna'])){ echo 'value="'.$_POST['druzyna'].'"';} ?>></label>
             </fieldset>
             <fieldset class="row">
                 <legend>Podaj personalia wydającego rozkaz</legend>
                 <p class="nag col-12">Podaj stopień instruktorski:</p>
-                <label class="col-sm-6 col-md-3"><input type="radio" name="st_instr" value="-" <?php if(isset($_POST['stopien'])){if($_POST['stopien']=='-'){echo 'checked';}} ?>> -</label>
+                <label class="col-sm-6 col-md-3"><input type="radio" name="st_instr" value="" <?php if(isset($_POST['stopien'])){if($_POST['stopien']=='-'){echo 'checked';}} ?>> -</label>
                 <label class="col-sm-6 col-md-3"><input type="radio" name="st_instr" value="pwd" <?php if(isset($_POST['stopien'])){if($_POST['stopien']=='pwd'){echo 'checked';}} ?>>pwd</label>
                 <label class="col-sm-6 col-md-3"><input type="radio" name="st_instr" value="phm" <?php if(isset($_POST['stopien'])){if($_POST['stopien']=='phm'){echo 'checked';}} ?>>phm</label>
                 <label class="col-sm-6 col-md-3"><input type="radio" name="st_instr" value="hm" <?php if(isset($_POST['stopien'])){if($_POST['stopien']=='hm'){echo 'checked';}} ?>>hm</label>
@@ -48,18 +48,18 @@
             <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#nagrody_popup">Nagrody i wyróżnienia</button>
             <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#upomnienia_popup">Upomnienia i kary</button>
             <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#rozne_popup">Różne</button>
-            <button class="col-sm-4 col-md-6 btn btn-success border border-primary" onclick="Export2Doc('exportContent');">Wygeneruj pdf</button>
+            <button class="col-sm-4 col-md-6 btn btn-success border border-primary" onclick="Export2Doc('exportContent');">Wygeneruj plik .doc</button>
         </fieldset>
-        Treść dokumentu
+        <h3>Treść dokumentu</h3>
         <!-- Treść rozkazu -->
 
         <div class="row" id="dokument">
-            <div class="row">
-                <div class="col-6" id="head_l"></div>
-                <div class="col-6" id="head_r"></div>
+            <div class="blok">
+                <div style="text-align: right" id="head_r"></div>
+                <div id="head_l"></div>
             </div>
-            <h1 id="nr_roz"></h1>
-            <div class="row" id="tresc">
+            <h1 class="blok" style="text-align: centre" id="nr_roz"></h1>
+            <div class="row blok" id="tresc">
                 <div class="col-12" id="0"></div>
                 <div class="col-12" id="1"></div>
                 <div class="col-12" id="2"></div>
@@ -69,8 +69,8 @@
                 <div class="col-12" id="6"></div>
                 <div class="col-12" id="7"></div>
             </div>
-            <div class="row">
-            <p class="right" id="podpis"></p>
+            <div class="blok">
+            <p class="right" style="text-align: right" id="podpis"></p>
             </div>
         </div>
 

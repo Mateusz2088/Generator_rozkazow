@@ -1,9 +1,7 @@
 function pobierz_dane(){
-    var data = new Date();
-    data.setDate(document.getElementsByName('data')[0].value);
-    document.getElementById('head_r').innerHTML=document.getElementsByName('miejsce')[0].value+','+data.getDay+'.'+data.getMonth+'.'+data.getFullYear;
+    document.getElementById('head_r').innerHTML=document.getElementsByName('miejsce')[0].value+','+document.getElementsByName('data')[0].value;///+data.getDay()+'.'+data.getMonth()+'.'+data.getFullYear();
     document.getElementById('head_l').innerHTML='Związek Harcerstwa Polskiego<br>'+document.getElementsByName('druzyna')[0].value+'<br>'+document.getElementsByName('hufiec')[0].value;
-    document.getElementById('nr_roz').innerHTML=document.getElementsByName('nr').value+'/'+document.getElementsByName('rok').value;
+    document.getElementById('nr_roz').innerHTML=document.getElementsByName('nr')[0].value+'/'+document.getElementsByName('rok')[0].value;
     for(var i=0; i<document.getElementsByName('st_instr').length; i++){
         if(document.getElementsByName('st_instr')[i].checked){
             var st=document.getElementsByName('st_instr')[i].value;
@@ -46,4 +44,6 @@ function dodaj_pkt(pkt_1, pkt_2){
         document.getElementById(0).innerHTML=nl2br(document.getElementsByName('tr_ppkt')[0].value);
     }
     pobierz_dane();
+    l[pkt_1]++;
+    document.getElementsByName('tr_ppkt')[pkt_1].value='';
 }

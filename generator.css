@@ -24,12 +24,20 @@ ol li:before {
 .show{
     visibility: visible;
 }
-#head_r{
+#head_r {
     text-align: right;
 }
 h1 {
     text-align: center;
 }
-.right{
+#podpis {
     text-align: right;
+}
+.blok {
+    display:block;
+    width: 100%;
+}
+
+#nr_roz {
+    text-align: center;
 }
