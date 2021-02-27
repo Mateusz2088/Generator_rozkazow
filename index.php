@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="generator.css" >
     <script src="punkty.js"></script>
     <script src="pdf_gen.js"></script>
+    <script src="frazy.js"></script>
 </head>
 <body>
     <div class="container">
@@ -41,13 +42,15 @@
         <fieldset id="panel" class="row">
             <legend>Dodaj punkty do rozkazu</legend>
             <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#wstep_popup">Wstęp</button>
-            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#zarzadzanie_popup">Uchwały, zarządzenia, decyzje</button>
-            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#zwolnienia_popup">Zwolnienia</button>
-            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#mianowania_popup">Mianowania</button>
-            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#przyznanie_popup">Przyznanie stopni, sprawności, znaków służb, uprawnień, odznak, zaliczenie zadań i projektów</button>
-            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#nagrody_popup">Nagrody i wyróżnienia</button>
-            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#upomnienia_popup">Upomnienia i kary</button>
-            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#rozne_popup">Różne</button>
+            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#zarzadzanie_popup">Zarządzenia i informacje</button>
+            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#zwolnienia_popup">Drużyna</button>
+            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#mianowania_popup">Zastępy</button>
+            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#przyznanie_popup">Instrumenty metodyczne</button>
+            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#nagrody_popup">Sprawy członkowskie</button>
+            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#upomnienia_popup">Kary organizacyjne</button>
+            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#rozne_popup">Pochwały, wyróżnienia nagrody</button>
+            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#rozne_popup">Inne</button>
+            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#rozne_popup">Inne</button>
             <button class="col-sm-4 col-md-6 btn btn-success border border-primary" onclick="Export2Doc('exportContent');">Wygeneruj plik .doc</button>
         </fieldset>
         <h3>Treść dokumentu</h3>
