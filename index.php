@@ -41,16 +41,52 @@
             </form>
         <fieldset id="panel" class="row">
             <legend>Dodaj punkty do rozkazu</legend>
-            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#popup" onclick="popup(this)">Wstęp</button>
-            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#popup" onclick="popup(this)">Zarządzenia i informacje</button>
-            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#popup" onclick="popup(this)">Drużyna</button>
-            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#popup" onclick="popup(this)">Zastępy</button>
-            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#popup" onclick="popup(this)">Instrumenty metodyczne</button>
-            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#popup" onclick="popup(this)">Sprawy członkowskie</button>
-            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#popup" onclick="popup(this)">Kary organizacyjne</button>
-            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#popup" onclick="popup(this)">Pochwały, wyróżnienia nagrody</button>
-            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#popup" onclick="popup(this)">Inne</button>
-            <button class="col-sm-4 col-md-3 btn btn-info border border-primary" data-toggle="modal" data-target="#popup" onclick="popup(this)">Sprostowania</button>
+            <select name="punkt">
+                <optgroup label="Wstęp">
+                    <option>Wstęp okolicznościowy</option>
+                    <option>Wyjątki z rozkazu jednostki nadrzędnej</option>
+                </optgroup>
+                <optgroup label="1. Zarządzenia i informacje">
+                    <option>Zarządzenia</option>
+                    <option>Informacje</option>
+                </optgroup>
+                <optgroup label="2. Drużyna">
+                    <option>Mianowania funkcyjnych</option>
+                    <option>Zwolnienia funkcyjnych</option>
+                    <option>Powołania do rady drużyny</option>
+                    <option>Zwolnienia z rady drużyny</option>
+                </optgroup>
+                <optgroup label="3. Zastępy">
+                    <option>Utworzenie zastępu</option>
+                    <option>Rozwiązanie zastępu</option>
+                    <option>Zmiany składu zastępów</option>
+                </optgroup>
+                <optgroup label="4. Instrumenty metodyczne">
+                    <option>Zamknięcie próby na stopień</option>
+                    <option>Otwarcie próby na stopień</option>
+                    <option>Zamknięcie próby na sprawność</option>
+                    <option>Otwarcie próby na sprawność</option>
+                    <option>Zaliczenie projektu starszoharcerskiego</option>
+                    <option>Otwarcie projektu starszoharcerskiego</option>
+                    <option>Otwarcie próby na znak służby</option>
+                    <option>Zamknięcie próby na znak służby</option>
+                    <option>Przyznanie odznak i uprawnień</option>
+                    <option>Nadanie Naramiennika Wędrowniczego</option>
+                    <option>Otwarcie próby wędrowniczej</option>
+                    <option>Otwarcie próby harcerki/harcerza</option>
+                </optgroup>
+                <optgroup label="5. Sprawy członkowskie">
+                    <option>Przyjęcie w poczet członków ZHP</option>
+                    <option>Wystąpienie z ZHP</option>
+                    <option>Skreślenie z listy członków ZHP</option>
+                    <option>Ustanie członkostwa w ZHP</option>
+                    <option>Zmiany przydziału służbowego i przynależności</option>
+                </optgroup>
+                <option><b>6. Kary organizacyjne</b></option>
+                <option><b>7. Pochwały, wyróżnienia, nagrody</b></option>
+                <option><b>8. Inne</b></option>
+                <option><b>9. Sprostowania</b></option>
+            </select>
             <button class="col-sm-4 col-md-6 btn btn-success border border-primary" onclick="Export2Doc('exportContent');">Wygeneruj plik .doc</button>
         </fieldset>
         <h3>Treść dokumentu</h3>
@@ -76,28 +112,6 @@
             <p class="right" style="text-align: right" id="podpis"></p>
             </div>
         </div>
-
-        <!--okienko-->
-
-        <div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="popup" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 name="title_popup" class="modal-title"></h4>
-              </div>
-              <div class="modal-body">
-                  <select name="opcje"></select><button onclick="zamiana()" class="btn btn-info" >Zatwierdź</button>
-                  <label><b>Treść:</b><br><textarea class="form-control col-12" name="tr_ppkt"></textarea></label>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij okno</button>
-                <button id="dodaj_post_btn" type="button" class="btn btn-success" onclick="dodaj_pkt()">Dodaj do rozkazu</button>
-              </div>
-            </div> <!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div>
-        <!-- Zarządzanie okienko-->
-	</div>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
