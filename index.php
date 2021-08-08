@@ -39,55 +39,57 @@
                 <label class="col-md-6"><input type="text" name="personalia" class="form-control" <?php if(isset($_POST['personalia'])){ echo 'value="'.$_POST['personalia'].'"';}?>></label>
             </fieldset>
             </form>
-        <fieldset id="panel" class="row">
+        <fieldset id="panel" class="row" >
             <legend>Dodaj punkty do rozkazu</legend>
-            <select name="punkt">
-                <optgroup label="Wstęp">
+            <select name="punkt" onchange="podpowiedzi(this.value)">
+                <optgroup name="g0" label="Wstęp">
                     <option>Wstęp okolicznościowy</option>
                     <option>Wyjątki z rozkazu jednostki nadrzędnej</option>
                 </optgroup>
-                <optgroup label="1. Zarządzenia i informacje">
-                    <option>Zarządzenia</option>
-                    <option>Informacje</option>
+                <optgroup name ="g1" label="1. Zarządzenia i informacje">
+                    <option>1.1. Zarządzenia</option>
+                    <option>1.2. Informacje</option>
                 </optgroup>
                 <optgroup label="2. Drużyna">
-                    <option>Mianowania funkcyjnych</option>
-                    <option>Zwolnienia funkcyjnych</option>
-                    <option>Powołania do rady drużyny</option>
-                    <option>Zwolnienia z rady drużyny</option>
+                    <option>2.1. Mianowania funkcyjnych</option>
+                    <option>2.2. Zwolnienia funkcyjnych</option>
+                    <option>2.3. Powołania do rady drużyny</option>
+                    <option>2.4. Zwolnienia z rady drużyny</option>
                 </optgroup>
                 <optgroup label="3. Zastępy">
-                    <option>Utworzenie zastępu</option>
-                    <option>Rozwiązanie zastępu</option>
-                    <option>Zmiany składu zastępów</option>
+                    <option>3.1. Utworzenie zastępu</option>
+                    <option>3.2. Rozwiązanie zastępu</option>
+                    <option>3.3. Zmiany składu zastępów</option>
                 </optgroup>
                 <optgroup label="4. Instrumenty metodyczne">
-                    <option>Zamknięcie próby na stopień</option>
-                    <option>Otwarcie próby na stopień</option>
-                    <option>Zamknięcie próby na sprawność</option>
-                    <option>Otwarcie próby na sprawność</option>
-                    <option>Zaliczenie projektu starszoharcerskiego</option>
-                    <option>Otwarcie projektu starszoharcerskiego</option>
-                    <option>Otwarcie próby na znak służby</option>
-                    <option>Zamknięcie próby na znak służby</option>
-                    <option>Przyznanie odznak i uprawnień</option>
-                    <option>Nadanie Naramiennika Wędrowniczego</option>
-                    <option>Otwarcie próby wędrowniczej</option>
-                    <option>Otwarcie próby harcerki/harcerza</option>
+                    <option>4.1. Zamknięcie próby na stopień</option>
+                    <option>4.2. Otwarcie próby na stopień</option>
+                    <option>4.3. Zamknięcie próby na sprawność</option>
+                    <option>4.4. Otwarcie próby na sprawność</option>
+                    <option>4.5. Zaliczenie projektu starszoharcerskiego</option>
+                    <option>4.6. Otwarcie projektu starszoharcerskiego</option>
+                    <option>4.7. Otwarcie próby na znak służby</option>
+                    <option>4.8. Zamknięcie próby na znak służby</option>
+                    <option>4.9. Przyznanie odznak i uprawnień</option>
+                    <option>4.10. Nadanie Naramiennika Wędrowniczego</option>
+                    <option>4.11. Otwarcie próby wędrowniczej</option>
+                    <option>4.12. Otwarcie próby harcerki/harcerza</option>
                 </optgroup>
                 <optgroup label="5. Sprawy członkowskie">
-                    <option>Przyjęcie w poczet członków ZHP</option>
-                    <option>Wystąpienie z ZHP</option>
-                    <option>Skreślenie z listy członków ZHP</option>
-                    <option>Ustanie członkostwa w ZHP</option>
-                    <option>Zmiany przydziału służbowego i przynależności</option>
+                    <option>5.1. Przyjęcie w poczet członków ZHP</option>
+                    <option>5.2. Wystąpienie z ZHP</option>
+                    <option>5.3. Skreślenie z listy członków ZHP</option>
+                    <option>5.4. Ustanie członkostwa w ZHP</option>
+                    <option>5.5. Zmiany przydziału służbowego i przynależności</option>
                 </optgroup>
                 <option><b>6. Kary organizacyjne</b></option>
                 <option><b>7. Pochwały, wyróżnienia, nagrody</b></option>
                 <option><b>8. Inne</b></option>
                 <option><b>9. Sprostowania</b></option>
             </select>
-            <button class="col-sm-4 col-md-6 btn btn-success border border-primary" onclick="Export2Doc('exportContent');">Wygeneruj plik .doc</button>
+            <div style="display:block; width:100%;" id="pomoc"  ></div>
+            <textarea style="display:block; width:100%;" id="wpisana_tresc"></textarea>
+            <button class="col-sm-4 col-md-6 btn btn-success border border-primary" onclick="wpisz()">Dodaj do rozkazu</button>
         </fieldset>
         <h3>Treść dokumentu</h3>
         <!-- Treść rozkazu -->
@@ -99,18 +101,15 @@
             </div>
             <h1 class="blok" style="text-align: centre" id="nr_roz"></h1>
             <div class="row blok" id="tresc">
-                <div class="col-12" id="0"></div>
-                <div class="col-12" id="1"></div>
-                <div class="col-12" id="2"></div>
-                <div class="col-12" id="3"></div>
-                <div class="col-12" id="4"></div>
-                <div class="col-12" id="5"></div>
-                <div class="col-12" id="6"></div>
-                <div class="col-12" id="7"></div>
+                <!-- treść dokumentu gotowy do eksportu -->
+                <div class="col-12" name="g0"></div>
+                    <div class="col-12" name="g0_1"></div>
+                <div class="col-12" name="g1"></div>
             </div>
             <div class="blok">
             <p class="right" style="text-align: right" id="podpis"></p>
             </div>
+            <button class="col-sm-4 col-md-6 btn btn-success border border-primary" onclick="Export2Doc('exportContent');">Wygeneruj plik .doc</button>
         </div>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
