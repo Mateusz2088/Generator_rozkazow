@@ -42,23 +42,37 @@ function wpisz(){
     var wybrany_obj = document.getElementsByName('punkt')[0];
     var div_glowny= document.getElementById('tresc');
     var tresc = document.getElementById('wpisana_tresc').value;
-    var label = wybrany_obj.options[wybrany_obj.selectedIndex].parentNode.label;
+    var optogroup = wybrany_obj.options[wybrany_obj.selectedIndex].parentNode;
+    var z=false;
     if (div_glowny.hasChildNodes()){
-        var children = div_glowny.childNodes;
-        for (var i = 0; i < div_glowny.children.length; i++){
-            if(label==div_glowny.children[i].innerHTML){
-                var under_children = div_glowny.children[i].childNodes;
-                for(var j=0; j < div_glowny.children[i].underchildren.length; j++){
-                    if(wybrany_obj.value=div_glowny.children[i].underchildren[j].innerHTML){
-                        var wpisz = document.createElement;
-                        wpisz.tagName='div';
-                        wpisz.innerHTML=wybrany_obj.value.substring(0, wybrany_obj.value.lastIndexOf('.'))+l[wybrany_obj.selectedIndex]+". "+tresc;
+        switch(optogroup.name){
+            case "g0":
+                document.getElementsByName('g0')[1].innerHTML=this.innerHTML+tresc;
+                break;
+            case "g1":
+                for (let i = 0; i < document.getElementsByName('g0')[1].children.length; i++) {
+                    if(document.getElementsByName('g0')[1].children[i].name==wybrany_obj.innerHTML){
+                        var p = document.createElement('p');
+                        p.innerHTML='&nbsp;'+wybrany_obj.value.substring(0, wybrany_obj.value.lastIndexOf('.'))+'.'+l[wybrany_obj.selectedIndex]+'. '+tresc;
+                        p.className="col-12";
+                        document.getElementsByName('g0')[1].children[i].appendChild(p);
+                        l[wybrany_obj.selectedIndex]++;
+                        z=true;
                         break;
                     }
                 }
-            }
+                if(z=false){
+                    var div = document.createElement('div');
+                    div.name=wybrany_obj.innerHTML;
+                    var p = document.createElement('p');
+                    p.innerHTML='&nbsp;'+wybrany_obj.value.substring(0, wybrany_obj.value.lastIndexOf('.'))+'.'+l[wybrany_obj.selectedIndex]+'. '+tresc;
+                    p.className="col-12";
+                    div.appendChild(p);
+                    l[wybrany_obj.selectedIndex]++;
+                    z=true;
+                }
         }
     }else{
-        wybrany_obj
+        console.error("Błędny kod, sprawdź źródło.");
     }
 }

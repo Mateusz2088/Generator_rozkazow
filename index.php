@@ -50,18 +50,18 @@
                     <option>1.1. Zarządzenia</option>
                     <option>1.2. Informacje</option>
                 </optgroup>
-                <optgroup label="2. Drużyna">
+                <optgroup name ="g2" label="2. Drużyna">
                     <option>2.1. Mianowania funkcyjnych</option>
                     <option>2.2. Zwolnienia funkcyjnych</option>
                     <option>2.3. Powołania do rady drużyny</option>
                     <option>2.4. Zwolnienia z rady drużyny</option>
                 </optgroup>
-                <optgroup label="3. Zastępy">
+                <optgroup name ="g3" label="3. Zastępy">
                     <option>3.1. Utworzenie zastępu</option>
                     <option>3.2. Rozwiązanie zastępu</option>
                     <option>3.3. Zmiany składu zastępów</option>
                 </optgroup>
-                <optgroup label="4. Instrumenty metodyczne">
+                <optgroup name ="g4" label="4. Instrumenty metodyczne">
                     <option>4.1. Zamknięcie próby na stopień</option>
                     <option>4.2. Otwarcie próby na stopień</option>
                     <option>4.3. Zamknięcie próby na sprawność</option>
@@ -75,17 +75,17 @@
                     <option>4.11. Otwarcie próby wędrowniczej</option>
                     <option>4.12. Otwarcie próby harcerki/harcerza</option>
                 </optgroup>
-                <optgroup label="5. Sprawy członkowskie">
+                <optgroup name ="g5" label="5. Sprawy członkowskie">
                     <option>5.1. Przyjęcie w poczet członków ZHP</option>
                     <option>5.2. Wystąpienie z ZHP</option>
                     <option>5.3. Skreślenie z listy członków ZHP</option>
                     <option>5.4. Ustanie członkostwa w ZHP</option>
                     <option>5.5. Zmiany przydziału służbowego i przynależności</option>
                 </optgroup>
-                <option><b>6. Kary organizacyjne</b></option>
-                <option><b>7. Pochwały, wyróżnienia, nagrody</b></option>
-                <option><b>8. Inne</b></option>
-                <option><b>9. Sprostowania</b></option>
+                <option name ="g6" ><b>6. Kary organizacyjne</b></option>
+                <option name ="g7"><b>7. Pochwały, wyróżnienia, nagrody</b></option>
+                <option name ="g8"><b>8. Inne</b></option>
+                <option name ="g9"><b>9. Sprostowania</b></option>
             </select>
             <div style="display:block; width:100%;" id="pomoc"  ></div>
             <textarea style="display:block; width:100%;" id="wpisana_tresc"></textarea>
@@ -103,8 +103,15 @@
             <div class="row blok" id="tresc">
                 <!-- treść dokumentu gotowy do eksportu -->
                 <div class="col-12" name="g0"></div>
-                    <div class="col-12" name="g0_1"></div>
                 <div class="col-12" name="g1"></div>
+                <div class="col-12" name="g2"></div>
+                <div class="col-12" name="g3"></div>
+                <div class="col-12" name="g4"></div>
+                <div class="col-12" name="g5"></div>
+                <div class="col-12" name="g6"></div>
+                <div class="col-12" name="g7"></div>
+                <div class="col-12" name="g8"></div>
+                <div class="col-12" name="g9"></div>
             </div>
             <div class="blok">
             <p class="right" style="text-align: right" id="podpis"></p>
