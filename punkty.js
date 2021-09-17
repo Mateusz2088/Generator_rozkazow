@@ -26,10 +26,11 @@ var l = [];
 for(var i=0; i<=7;i++){
     l[i]=1;
 }
-var nag= ['Wstęp','1. Uchwały, zarządzenia, decyzje','2. Zwolnienia','3. Mianowania','4. Przyznanie stopni, sprawności, znaków służb, uprawnień, odznak, zaliczenie zadań i projektów','5. Nagrody i wyróżnienia','6. Upomnienia i kary','7. Różne']
+var nag= ['Wstęp','1. Zarządzenia i informacje','2. Drużyna','3. Zastępy','4. Instrumenty metodyczne','5. Sprawy członkowskie','6. Kary organizacyjne','7. Pochwały, wyróżnienia nagrody', '8. Inne', '9. Sprostowania']
 
 /// dodawanie punktów do diva
-function dodaj_pkt(pkt_1, pkt_2){
+function dodaj_pkt(pkt_1){
+    pkt_1=nr; //document.getElementsByName('title_popup')[0].innerHTML;
     if(l[pkt_1]==1){
         var h3=document.createElement('h4');
         h3.innerHTML=nag[pkt_1];
